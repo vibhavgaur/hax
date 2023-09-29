@@ -1,0 +1,15 @@
+# this file is stored at /etc/systemd/system/steamlink-starter.service
+
+[Unit]
+Description=Starts steamlink on boot and shuts down pi after steamlink is closed
+After=network.target
+
+[Service]
+User=pi
+Type=oneshot
+ExecStart=/usr/bin/steamlink
+User=pi
+ExecStop=/usr/local/bin/steamlink-service-stopper.sh
+
+[Install]
+WantedBy=multi-user.target
